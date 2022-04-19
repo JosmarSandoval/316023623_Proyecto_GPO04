@@ -1,10 +1,10 @@
 ﻿  Main.cpp
 C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(219,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(481,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(482,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(486,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(487,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(489,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(490,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(537,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(538,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(542,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(543,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(545,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\ProyectoFinal\Main.cpp(546,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
 soil2-debug.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_DXT.obj)' o en 'C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
   ProyectoFinal.vcxproj -> C:\Users\josma\Documents\8vo Semestre\CG\LAB CG\ProyectoFinal\316023623_Proyecto_GPO04\ProyectoFinal\Debug\ProyectoFinal.exe

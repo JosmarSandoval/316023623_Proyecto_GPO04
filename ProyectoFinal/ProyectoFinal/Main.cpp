@@ -258,12 +258,33 @@ int main()
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 20.0f);
 
         // Draw the loaded model
+        //Cuerpos de botamon
+
+        //Botamon 1
         glm::mat4 model(1);
         model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+        model = glm::translate(model, glm::vec3(20.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
-        //botamoncuerpo.Draw(lightingShader);
+        botamoncuerpo.Draw(lightingShader);
         
+        //Botamon 2
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+        model = glm::translate(model, glm::vec3(100.0f, 0.0f, -20.0f));
+        model = glm::rotate(model, glm::radians(80.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        botamoncuerpo.Draw(lightingShader);
+
+        //Botamon 3
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+        model = glm::translate(model, glm::vec3(50.0f, 0.0f, 15.0f));
+        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        botamoncuerpo.Draw(lightingShader);
       
         glBindVertexArray(0);
 
@@ -273,18 +294,56 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
+        //Ojos de botamon 1
         model = glm::mat4(1);
         model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+        model = glm::translate(model, glm::vec3(20.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        //ojoderbotamon.Draw(shader);
-
+        glBindVertexArray(VAO);
+        ojoderbotamon.Draw(shader);
 
         model = glm::mat4(1);
         model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+        model = glm::translate(model, glm::vec3(20.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        //ojoizqbotamon.Draw(shader);
+        glBindVertexArray(VAO);
+        ojoizqbotamon.Draw(shader);
 
+        //Ojos de botamon 2
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+        model = glm::translate(model, glm::vec3(100.0f, 0.0f, -20.0f));
+        model = glm::rotate(model, glm::radians(80.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        ojoderbotamon.Draw(shader);
 
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+        model = glm::translate(model, glm::vec3(100.0f, 0.0f, -20.0f));
+        model = glm::rotate(model, glm::radians(80.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        ojoizqbotamon.Draw(shader);
+
+        //Ojos de botamon 3
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+        model = glm::translate(model, glm::vec3(50.0f, 0.0f, 15.0f));
+        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        ojoderbotamon.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+        model = glm::translate(model, glm::vec3(50.0f, 0.0f, 15.0f));
+        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        ojoizqbotamon.Draw(shader);
+
+        //Dibujando piso
         model = glm::mat4(1);
         model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
@@ -298,6 +357,7 @@ int main()
         glBindVertexArray(VAO);
         suelo.Draw(shader);
 
+        //Dibujando arboles
         model = glm::mat4(1);
         model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
