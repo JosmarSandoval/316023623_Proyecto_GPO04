@@ -21,7 +21,7 @@
 #include "SOIL2/SOIL2.h"
 #include "stb_image.h"
 // Properties
-const GLuint WIDTH = 800, HEIGHT = 600;
+const GLuint WIDTH = 1080, HEIGHT = 720;
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
 // Function prototypes
@@ -31,7 +31,7 @@ void DoMovement();
 
 
 // Camera
-Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
+Camera camera(glm::vec3(30.0f, 10.0f, 50.0f));
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
@@ -186,6 +186,10 @@ int main()
     Model ojoizqbotamon((char*)"Models/Botamon/ojoizqbotamon.obj");
     Model suelo((char*)"Models/Piso/pasto1.obj");
     Model arbol((char*)"Models/arbol/arbol.obj");
+    Model pabumon((char*)"Models/Pabumon/pabumon.obj");
+    Model huevo1((char*)"Models/Digihuevos/huevo1.obj");
+    Model huevo2((char*)"Models/Digihuevos/huevo2.obj");
+
     GLuint texture;
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
@@ -343,6 +347,74 @@ int main()
         glBindVertexArray(VAO);
         ojoizqbotamon.Draw(shader);
 
+        //Pabumon 1
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(0.20f, 0.20f, 0.20f));
+        model = glm::translate(model, glm::vec3(-50.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        pabumon.Draw(shader);
+
+        //Pabumon 2
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(0.20f, 0.20f, 0.20f));
+        model = glm::translate(model, glm::vec3(50.0f, 0.0f, -50.0f));
+        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        pabumon.Draw(shader);
+
+
+        //Pabumon 3
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(0.20f, 0.20f, 0.20f));
+        model = glm::translate(model, glm::vec3(150.0f, 0.0f, -50.0f));
+        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        pabumon.Draw(shader);
+
+
+        //Digihuevo tipo 1
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(55.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        huevo1.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(60.0f, 0.0f, -5.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        huevo1.Draw(shader);
+
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(30.0f, 0.0f, 5.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        huevo1.Draw(shader);
+
+        //Digihuevo tipo 2
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(40.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        huevo2.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -10.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        huevo2.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(10.0f, 0.0f, 20.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        huevo2.Draw(shader);
+
+
         //Dibujando piso
         model = glm::mat4(1);
         model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -353,6 +425,20 @@ int main()
         model = glm::mat4(1);
         model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
         model = glm::translate(model, glm::vec3(21.65f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        suelo.Draw(shader);
+        
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -21.65f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        suelo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+        model = glm::translate(model, glm::vec3(21.65f, 0.0f, -21.65f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         suelo.Draw(shader);
