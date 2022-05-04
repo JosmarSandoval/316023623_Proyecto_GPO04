@@ -189,6 +189,16 @@ int main()
     Model pabumon((char*)"Models/Pabumon/pabumon.obj");
     Model huevo1((char*)"Models/Digihuevos/huevo1.obj");
     Model huevo2((char*)"Models/Digihuevos/huevo2.obj");
+    Model cubo((char*)"Models/Cubos/cubo.obj");
+    Model cilindro1((char*)"Models/Cubos/cilindro1.obj");
+    Model cilindro2((char*)"Models/Cubos/cilindro2.obj");
+    Model cilindro3((char*)"Models/Cubos/cilindro3.obj");
+    Model cilindro4((char*)"Models/Cubos/cilindro4.obj");
+    Model cono1((char*)"Models/Cubos/cono1.obj");
+    Model cono2((char*)"Models/Cubos/cono2.obj");
+    Model cono3((char*)"Models/Cubos/cono3.obj");
+
+
 
     GLuint texture;
     glGenTextures(1, &texture);
@@ -499,13 +509,138 @@ int main()
         arbol.Draw(shader);
 
         model = glm::mat4(1);
-        
         model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
         model = glm::translate(model, glm::vec3(15.0f, 0.0f, -5.0f));
         model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         arbol.Draw(shader);
+        
+        //Figuras geometricas
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+        model = glm::translate(model, glm::vec3(12.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cubo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+        model = glm::translate(model, glm::vec3(12.0f, 3.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cubo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(4.0f, 4.0f, 3.0f));
+        model = glm::translate(model, glm::vec3(18.0f, 7.8f, 0.0f));
+        model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cilindro3.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 1.0f, -10.0f));
+        model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cubo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 3.0f, -10.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cubo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(4.0f, 4.0f, 3.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 7.8f, -20.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cilindro1.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+        model = glm::translate(model, glm::vec3(9.2f, 1.0f, -11.8f));
+        model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cubo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+        model = glm::translate(model, glm::vec3(10.7f, 1.0f, -10.2f));
+        model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cubo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+        model = glm::translate(model, glm::vec3(12.2f, 1.0f, -8.7f));
+        model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 0.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cubo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+        model = glm::translate(model, glm::vec3(9.95f, 3.0f, -11.0f));
+        model = glm::rotate(model, glm::radians(225.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cubo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+        model = glm::translate(model, glm::vec3(11.45f, 3.0f, -9.45f));
+        model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cubo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+        model = glm::translate(model, glm::vec3(10.7f, 5.0f, -10.225f));
+        model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cubo.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        model = glm::translate(model, glm::vec3(32.2f, 21.5f, -30.225f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cono1.Draw(shader);
+
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(4.0f, 4.0f, 3.0f));
+        model = glm::translate(model, glm::vec3(15.7f, 1.5f, -16.0f));
+        model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(60.0f), glm::vec3(-1.0f, 0.0, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cilindro2.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        model = glm::translate(model, glm::vec3(25.0f, 3.5f, 9.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        cono2.Draw(shader);
+
 
         glBindVertexArray(0);
 
