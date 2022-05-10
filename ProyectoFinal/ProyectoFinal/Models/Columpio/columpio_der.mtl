@@ -1,0 +1,613 @@
+newmtl bridge:___Default
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd STUCCO7.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge1:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge2:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge3:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge4:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge5:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge6:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge7:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge8:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge9:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge10:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge11:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge12:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge13:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge14:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge15:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge16:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge18:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge19:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge20:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge21:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge22:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge23:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge24:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge25:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge26:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge27:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge28:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge29:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge30:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge31:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge32:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge33:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge34:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge35:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge36:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge37:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge38:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge39:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge40:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge41:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge42:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge43:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge44:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge45:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge46:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge47:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge48:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge49:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge50:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge51:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge52:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge53:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge54:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge55:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge56:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl bridge57:___Default2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.60 0.60 0.60
+Tf 1.00 1.00 1.00
+map_Kd WHTWOOD1.JPG
+bump  -bm 0 WHTWOOD1.JPG
+Ni 1.00
+Ks 0.90 0.90 0.90
+Ns 0.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd texture.png
+Ni 1.00
+newmtl lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd texture.png
+Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd texture.png
+Ni 1.00
+newmtl lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd texture.png
+Ni 1.00
