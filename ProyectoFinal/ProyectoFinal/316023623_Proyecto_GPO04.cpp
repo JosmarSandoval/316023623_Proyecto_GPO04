@@ -59,7 +59,9 @@ float movKitX4 = 0.0;
 float movKitZ4 = 0.0;
 float movKitZ5 = 0.0;
 float movKitX5 = 0.0;
+float rotarCil = 0.0;
 
+bool girarCil = false;
 bool movAdel = false; 
 bool giroRueda;
 bool columadel;
@@ -74,6 +76,8 @@ bool recorrido7 = false;
 bool recorrido8 = false;
 bool recorrido9 = false;
 
+int cil = 0;
+
 glm::vec3 PosIniAuto1(-180.0f, 0.0f, -50.0f);
 glm::vec3 PosIniRueda1Auto1(-177.6f, 1.4f, -53.7f);
 glm::vec3 PosIniRueda2Auto1(-182.35f, 1.4f, -53.7f);
@@ -81,10 +85,10 @@ glm::vec3 PosIniRueda3Auto1(-177.6f, 1.4f, -46.5f);
 glm::vec3 PosIniRueda4Auto1(-182.35f, 1.4f, -46.5f);
 //
 //glm::vec3 PosIniAuto2(-180.0f, 0.0f, -50.0f);
-//glm::vec3 PosIniRueda1Auto1(-177.6f, 1.4f, -53.7f);
 //glm::vec3 PosIniRueda1Auto2(-177.6f, 1.4f, -53.7f);
-//glm::vec3 PosIniRueda1Auto3(-177.6f, 1.4f, -53.7f);
-//glm::vec3 PosIniRueda1Auto4(-177.6f, 1.4f, -53.7f);
+//glm::vec3 PosIniRueda1Auto2(-177.6f, 1.4f, -53.7f);
+//glm::vec3 PosIniRueda1Auto2(-177.6f, 1.4f, -53.7f);
+//glm::vec3 PosIniRueda1Auto2(-177.6f, 1.4f, -53.7f);
 //
 glm::vec3 PosIniAuto3(135.0f, 0.0f, 50.0f);
 glm::vec3 PosIniRueda2Auto3(132.6f, 1.4f, 46.4f); 
@@ -92,11 +96,11 @@ glm::vec3 PosIniRueda1Auto3(137.35f, 1.4f, 46.4f);
 glm::vec3 PosIniRueda4Auto3(132.6f, 1.4f, 53.6f);
 glm::vec3 PosIniRueda3Auto3(137.35f, 1.4f, 53.6f);
 
-//glm::vec3 PosIniAuto4(-180.0f, 0.0f, -50.0f);
-//glm::vec3 PosIniRueda1Auto1(-177.6f, 1.4f, -53.7f);
-//glm::vec3 PosIniRueda1Auto2(-177.6f, 1.4f, -53.7f);
-//glm::vec3 PosIniRueda1Auto3(-177.6f, 1.4f, -53.7f);
-//glm::vec3 PosIniRueda1Auto4(-177.6f, 1.4f, -53.7f);
+glm::vec3 PosIniAuto4(-135.0f, 0.0f, 50.0f);
+glm::vec3 PosIniRueda1Auto4(-137.35f, 1.4f, 53.6f);
+glm::vec3 PosIniRueda2Auto4(-132.6f, 1.4f, 53.6f);
+glm::vec3 PosIniRueda3Auto4(-137.35f, 1.4f, 46.4f);
+glm::vec3 PosIniRueda4Auto4(-132.6f, 1.4f, 46.4f);
 
 int main()
 {
@@ -1461,34 +1465,41 @@ int main()
 
         //Carro4
         model = glm::mat4(1);
-        //model = glm::translate(model, glm::vec3(movKitX, 0, movKitZ));
-        model = glm::translate(model, glm::vec3(-140.0f, 0.0f, 50.0f));
+        model = glm::translate(model, PosIniAuto4 + glm::vec3(-movKitX, 0, -movKitZ));
+        model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         carro4.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-142.35f, 1.4f, 53.6f));
-        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0, 0.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        glBindVertexArray(VAO);
-        rueda2.Draw(shader);
-
-        model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-137.6f, 1.4f, 53.6f));
+        model = glm::translate(model, PosIniRueda1Auto4 + glm::vec3(-movKitX2, 0, -movKitZ2));
+        model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         rueda1.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-142.35f, 1.4f, 46.4f));
-        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::translate(model, PosIniRueda2Auto4 + glm::vec3(-movKitX3, 0, -movKitZ3));
+        model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        rueda2.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, PosIniRueda3Auto4 + glm::vec3(-movKitX4, 0, -movKitZ4));
+        model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         rueda3.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-137.6f, 1.4f, 46.4f));    
+        model = glm::translate(model, PosIniRueda4Auto4 + glm::vec3(-movKitX5, 0, -movKitZ5));
+        model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         rueda4.Draw(shader);
@@ -1582,6 +1593,36 @@ void DoMovement()
                 columadel = true;
             }
         }
+
+        //Animar Figuras Cilindros
+        if (girarCil == true) {
+            if (cil < 5) {
+                if (rotarCil < 360.0f) {
+                    rotarCil += 1.0f;
+                }
+                cil += 1;
+            }
+            else {
+                rotarCil = 360.0f;
+                cil = 0;
+                girarCil = false;
+            }
+        }
+
+        if (girarCil == false) {
+            if (cil < 5) {
+                if (rotarCil > 0.0f) {
+                    rotarCil -= 1.0f;
+                }
+                cil += 1;
+            }
+            else {
+                rotarCil = 0.0f;
+                cil = 0;
+                girarCil = true;
+            }
+        }
+
         
     }
 
@@ -1612,14 +1653,14 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
     {
         activanim = true;
         columadel = true;
-        
+        girarCil = true;
 
     }
 
     if (keys[GLFW_KEY_M])
     {
         activanim = false;
-        columadel = false;
+
     }
     
     if (keys[GLFW_KEY_Z]) {
@@ -1638,7 +1679,6 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 }
 
 void animaCompleja() {
-    //Recorrido Auto 1
     if(movAdel){
         if (recorrido1)
         {
