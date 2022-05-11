@@ -1,224 +1,27 @@
-newmtl Lego_car:backlampSG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl Lego_car:blackSG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl Lego_car:blueSG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl Lego_car:brightgreySG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl Lego_car:frontlampSG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl Lego_car:mia_material_x1SG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl Lego_car:redSG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl Lego_car:toplampSG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl Lego_car:whiteSG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl Lego_car:yellowSG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl blinn1SG
+newmtl botamon1:lambert1SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
+map_Kd ojosbotamon.png
 Ni 1.00
-Ks 0.50 0.50 0.50
-newmtl lambert2SG
+newmtl botamon1:lambert2SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
+map_Kd ojosbotamon.png
 Ni 1.00
-newmtl lambert3SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert4SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert5SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert6SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert7SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert8SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert9SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert10SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert11SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert12SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert13SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert14SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert15SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura_color.png
-Ni 1.00
-newmtl lambert16SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd auto_textura.png
-Ni 1.00
-newmtl lambert20SG
+newmtl botamon1:lambert20SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd botamon_texture.png
 Ni 1.00
-newmtl ojoderbotamon:lambert2SG
+newmtl initialShadingGroup
 illum 4
-Kd 0.00 0.00 0.00
+Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd ojosbotamon.png
 Ni 1.00
-newmtl ojoizqbotamon:lambert1SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd ojosbotamon.png
-Ni 1.00
-newmtl phong1SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd ventana.png
-Ni 1.00
-Ks 0.00 0.00 0.00
-map_Ks SpecularMap.png
-Ns 18.00

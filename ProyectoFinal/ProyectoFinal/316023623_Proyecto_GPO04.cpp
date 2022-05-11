@@ -29,9 +29,10 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 void MouseCallback(GLFWwindow* window, double xPos, double yPos);
 void DoMovement();
 void animaCompleja();
+void animaDigimon();
 
 // Camera
-Camera camera(glm::vec3(30.0f, 10.0f, 50.0f));
+Camera camera(glm::vec3(0.0f, 50.0f, 150.0f));
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
@@ -45,8 +46,8 @@ GLfloat lastFrame = 0.0f;
 float rot = 0.0f;
 
 //Variables para animaciones
-float columpiar = 0;
-float girar = 0;
+float columpiar = 0.0;
+float girar = 0.0;
 float tiempo;
 float movKitX = 0.0;
 float movKitZ = 0.0;
@@ -60,11 +61,15 @@ float movKitZ4 = 0.0;
 float movKitZ5 = 0.0;
 float movKitX5 = 0.0;
 float rotarCil = 0.0;
+float rotaDigi1 = 0.0;
+float avanzaDigi = 0.0;
+
 
 bool girarCil = false;
 bool movAdel = false; 
 bool giroRueda;
 bool columadel;
+bool animDigi = false;
 bool activanim = false;
 bool recorrido1 = true;
 bool recorrido2 = false;
@@ -74,22 +79,30 @@ bool recorrido5 = false;
 bool recorrido6 = false;
 bool recorrido7 = false;
 bool recorrido8 = false;
-bool recorrido9 = false;
+bool recorrido9 = true;
+bool recorrido10 = false;
+bool recorrido11 = false;
+bool recorrido12 = false;
+bool recorrido13 = true;
+bool recorrido14 = false;
+bool recorrido15 = false;
+bool recorrido16 = false;
 
-int cil = 0;
+
+//Coordenadas para los autos
 
 glm::vec3 PosIniAuto1(-180.0f, 0.0f, -50.0f);
 glm::vec3 PosIniRueda1Auto1(-177.6f, 1.4f, -53.7f);
 glm::vec3 PosIniRueda2Auto1(-182.35f, 1.4f, -53.7f);
 glm::vec3 PosIniRueda3Auto1(-177.6f, 1.4f, -46.5f);
 glm::vec3 PosIniRueda4Auto1(-182.35f, 1.4f, -46.5f);
-//
-//glm::vec3 PosIniAuto2(-180.0f, 0.0f, -50.0f);
-//glm::vec3 PosIniRueda1Auto2(-177.6f, 1.4f, -53.7f);
-//glm::vec3 PosIniRueda1Auto2(-177.6f, 1.4f, -53.7f);
-//glm::vec3 PosIniRueda1Auto2(-177.6f, 1.4f, -53.7f);
-//glm::vec3 PosIniRueda1Auto2(-177.6f, 1.4f, -53.7f);
-//
+
+glm::vec3 PosIniAuto2(127.0f, 0.0f, -50.0f);
+glm::vec3 PosIniRueda4Auto2(129.35f, 1.4f, -53.7f);
+glm::vec3 PosIniRueda3Auto2(124.6f, 1.4f, -53.7f);
+glm::vec3 PosIniRueda2Auto2(129.35f, 1.4f, -46.5f);
+glm::vec3 PosIniRueda1Auto2(124.6f, 1.4f, -46.5f);
+
 glm::vec3 PosIniAuto3(135.0f, 0.0f, 50.0f);
 glm::vec3 PosIniRueda2Auto3(132.6f, 1.4f, 46.4f); 
 glm::vec3 PosIniRueda1Auto3(137.35f, 1.4f, 46.4f);
@@ -280,6 +293,8 @@ int main()
         glfwPollEvents();
         DoMovement();
         animaCompleja();
+        animaDigimon();
+       
 
         // Clear the colorbuffer
         glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
@@ -306,7 +321,6 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
-        //Botamon
         // Set material properties
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.ambient"), 0.1f, 0.1f, 0.1f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.0f, 0.0f, 0.0f);
@@ -314,11 +328,6 @@ int main()
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 20.0f);
 
         // Draw the loaded model
-        //Cuerpos de botamon
-
-        //Botamon 1
-        glm::mat4 model(1);
-
 
 
         // Get the uniform locations
@@ -331,7 +340,7 @@ int main()
         glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
 
-        model = glm::mat4(1);
+        glm::mat4 model(1);
         
         glBindVertexArray(0);
 
@@ -371,56 +380,62 @@ int main()
      
         //Botamon 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
-        model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 250.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, avanzaDigi));
+        model = glm::translate(model, glm::vec3(-20.0f, 2.0f, 50.0f));
+        model = glm::rotate(model, glm::radians(-rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         botamon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
-        model = glm::translate(model, glm::vec3(0.0f, 32.0f, 0.0f));
-        model = glm::rotate(model, glm::radians(80.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::translate(model, glm::vec3(0.0f, avanzaDigi*0.5f, 0.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 10.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0, 0.0f));    
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         botamon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
-        model = glm::translate(model, glm::vec3(-150.0f, 0.0f, 15.0f));
-        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, avanzaDigi));
+        model = glm::translate(model, glm::vec3(-100.0f, 2.0f, 15.0f));   
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         botamon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
-        model = glm::translate(model, glm::vec3(-400.0f, 0.0f, 100.0f));
-        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        model = glm::translate(model, glm::vec3(-avanzaDigi, 0.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(50.0f, 2.0f, 100.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, -1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         botamon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
-        model = glm::translate(model, glm::vec3(-150.0f, 0.0f, -150.0f));
-        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        model = glm::translate(model, glm::vec3(avanzaDigi, 0.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(50.0f, 2.0f, -25.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, -1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         botamon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
-        model = glm::translate(model, glm::vec3(200.0f, 0.0f, 150.0f));
-        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -avanzaDigi));
+        model = glm::translate(model, glm::vec3(80.0f, 2.0f, 35.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         botamon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
-        model = glm::translate(model, glm::vec3(400.0f, 0.0f, -250.0f));
-        model = glm::rotate(model, glm::radians(280.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        model = glm::translate(model, glm::vec3 (avanzaDigi, 0.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(-40.0f, 2.0f, -50.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, -1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         botamon.Draw(shader);
@@ -428,48 +443,58 @@ int main()
 
         //Pabumon
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.20f, 0.20f, 0.20f));
+        model = glm::scale(model, glm::vec3(0.30f, 0.30f, 0.30f));
+        model = glm::translate(model, glm::vec3(avanzaDigi*4.0f, 0.0f, 0.0f));
         model = glm::translate(model, glm::vec3(-300.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, -1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         pabumon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.20f, 0.20f, 0.20f));
+        model = glm::scale(model, glm::vec3(0.30f, 0.30f, 0.30f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, avanzaDigi*4.0f));
         model = glm::translate(model, glm::vec3(-200.0f, 0.0f, -50.0f));
-        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, -1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         pabumon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.20f, 0.20f, 0.20f));
+        model = glm::scale(model, glm::vec3(0.30f, 0.30f, 0.30f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, avanzaDigi * 4.0f));
         model = glm::translate(model, glm::vec3(150.0f, 0.0f, -50.0f));
-        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         pabumon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.20f, 0.20f, 0.20f));
-        model = glm::translate(model, glm::vec3(250.0f, 0.0f, 50.0f));
-        model = glm::rotate(model, glm::radians(40.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::scale(model, glm::vec3(0.30f, 0.30f, 0.30f));
+        model = glm::translate(model, glm::vec3(avanzaDigi * 4.0f, 0.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(200.0f, 0.0f, 150.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         pabumon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.20f, 0.20f, 0.20f));
-        model = glm::translate(model, glm::vec3(250.0f, 0.0f, -150.0f));
-        model = glm::rotate(model, glm::radians(170.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::scale(model, glm::vec3(0.30f, 0.30f, 0.30f));
+        model = glm::translate(model, glm::vec3(avanzaDigi * 4.0f, 0.0f, avanzaDigi * 4.0f));
+        model = glm::translate(model, glm::vec3(300.0f, 0.0f, -150.0f));
+        model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         pabumon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::scale(model, glm::vec3(0.20f, 0.20f, 0.20f));
-        model = glm::translate(model, glm::vec3(400.0f, 0.0f, 250.0f));
-        model = glm::rotate(model, glm::radians(240.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::scale(model, glm::vec3(0.30f, 0.30f, 0.30f));
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, avanzaDigi * 4.0f));
+        model = glm::translate(model, glm::vec3(-75.0f, 0.0f, -350.0f));
+        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         pabumon.Draw(shader);
@@ -1230,6 +1255,7 @@ int main()
         model = glm::mat4(1);
         model = glm::scale(model, glm::vec3(4.0f, 4.0f, 3.0f));
         model = glm::translate(model, glm::vec3(18.0f, 7.8f, 20.0f));
+        model = glm::rotate(model, glm::radians(rotarCil), glm::vec3(0.0f, 1.0, 0.0f));
         model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0, 0.0f));
         model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
@@ -1256,6 +1282,7 @@ int main()
         model = glm::mat4(1);
         model = glm::scale(model, glm::vec3(4.0f, 4.0f, 3.0f));
         model = glm::translate(model, glm::vec3(-15.0f, 7.8f, -20.0f));
+        model = glm::rotate(model, glm::radians(-rotarCil), glm::vec3(0.0f, 1.0, 0.0f));
         model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
@@ -1392,36 +1419,44 @@ int main()
 
         //Carro2
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(160.0f, 0.0f, -50.0f));
+        model = glm::translate(model, PosIniAuto2 + glm::vec3(movKitX, 0, -movKitZ));
+        model = glm::rotate(model, glm::radians(-rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         carro2.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(162.35f, 1.4f, -53.7f));
+        model = glm::translate(model, PosIniRueda2Auto2 + glm::vec3(movKitX2, 0, -movKitZ2));
+        model = glm::rotate(model, glm::radians(-rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         rueda2.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(157.6f, 1.4f, -53.7f));
-        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::translate(model, PosIniRueda1Auto2 + glm::vec3(movKitX3, 0, -movKitZ3));
+        model = glm::rotate(model, glm::radians(-rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         rueda1.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(162.35f, 1.4f, -46.5f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        glBindVertexArray(VAO);
-        rueda3.Draw(shader);
-
-        model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(157.6f, 1.4f, -46.5f));
-        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::translate(model, PosIniRueda4Auto2 + glm::vec3(movKitX4, 0, -movKitZ4));
+        model = glm::rotate(model, glm::radians(-rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         rueda4.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, PosIniRueda3Auto2 + glm::vec3(movKitX5, 0, -movKitZ5));
+        model = glm::rotate(model, glm::radians(-rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        rueda3.Draw(shader);
 
         //Carro3
         model = glm::mat4(1);
@@ -1475,7 +1510,7 @@ int main()
         model = glm::mat4(1);
         model = glm::translate(model, PosIniRueda1Auto4 + glm::vec3(-movKitX2, 0, -movKitZ2));
         model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
-        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(-girar), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         rueda1.Draw(shader);
@@ -1483,7 +1518,7 @@ int main()
         model = glm::mat4(1);
         model = glm::translate(model, PosIniRueda2Auto4 + glm::vec3(-movKitX3, 0, -movKitZ3));
         model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
-        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(-girar), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         rueda2.Draw(shader);
@@ -1491,7 +1526,7 @@ int main()
         model = glm::mat4(1);
         model = glm::translate(model, PosIniRueda3Auto4 + glm::vec3(-movKitX4, 0, -movKitZ4));
         model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
-        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(-girar), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         rueda3.Draw(shader);
@@ -1499,7 +1534,7 @@ int main()
         model = glm::mat4(1);
         model = glm::translate(model, PosIniRueda4Auto4 + glm::vec3(-movKitX5, 0, -movKitZ5));
         model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
-        model = glm::rotate(model, glm::radians(girar), glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(-girar), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         rueda4.Draw(shader);
@@ -1596,32 +1631,10 @@ void DoMovement()
 
         //Animar Figuras Cilindros
         if (girarCil == true) {
-            if (cil < 5) {
-                if (rotarCil < 360.0f) {
-                    rotarCil += 1.0f;
-                }
-                cil += 1;
-            }
-            else {
-                rotarCil = 360.0f;
-                cil = 0;
-                girarCil = false;
-            }
+            rotarCil += 1.0f;
         }
 
-        if (girarCil == false) {
-            if (cil < 5) {
-                if (rotarCil > 0.0f) {
-                    rotarCil -= 1.0f;
-                }
-                cil += 1;
-            }
-            else {
-                rotarCil = 0.0f;
-                cil = 0;
-                girarCil = true;
-            }
-        }
+
 
         
     }
@@ -1654,13 +1667,14 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
         activanim = true;
         columadel = true;
         girarCil = true;
-
+        animDigi = true;
     }
 
     if (keys[GLFW_KEY_M])
     {
         activanim = false;
-
+        movAdel = false;
+        animDigi = false;
     }
     
     if (keys[GLFW_KEY_Z]) {
@@ -1846,6 +1860,54 @@ void animaCompleja() {
 
     }
 }
+void animaDigimon() {
+    if (animDigi){
+        if (recorrido9) {
+            if (avanzaDigi < 20.0f) {
+                avanzaDigi += 0.2;
+            }
+            else {
+                recorrido9 = false;
+                recorrido10 = true;
+            }
+        }
+        
+        if (recorrido10) {
+            if (rotaDigi1 < 180.0f) {
+                rotaDigi1 += 5.0f;
+                
+            }
+            else{
+                recorrido10 = false;
+                recorrido11 = true;
+            }
+            
+        }
+
+        if (recorrido11) {
+            if (avanzaDigi > 0.0f) {
+                avanzaDigi -= 0.2;
+            }
+            else {
+                recorrido11 = false;
+                recorrido12 = true;
+            }
+        }
+
+        if (recorrido12) {
+            if (rotaDigi1 > 0.0f) {
+               rotaDigi1 -= 5.0f;
+            }
+            else {
+                recorrido12 = false;
+                recorrido9 = true;
+            }
+
+        }
+
+    }
+}
+
 
 void MouseCallback(GLFWwindow* window, double xPos, double yPos)
 {

@@ -16,8 +16,8 @@ uniform float time;
 void main()
 {
   float distance = length(aPos);
-  float effect = amplitude*sin(-PI*distance*frequency+time);
-  gl_Position = projection*view*model*vec4(aPos.x+effect,aPos.y+effect, aPos.z+effect,1);
+  float effect = -amplitude*time;
+  gl_Position = projection*view*model*vec4(aPos.x,aPos.y, aPos.z,1);
   TexCoords=vec2(aTexCoords.x+effect,aTexCoords.y+effect);
 
 }
