@@ -280,6 +280,7 @@ int main()
     Model columpio((char*)"Models/Columpio/estructura_columpio.obj");
     Model asientoColDer((char*)"Models/Columpio/columpio_der.obj");
     Model asientoColIzq((char*)"Models/Columpio/columpio_izq.obj");
+    Model terriermon((char*)"Models/Terriermon/Terriermon3.obj");
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -377,7 +378,14 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         skybox.Draw(shader);
-     
+        
+        //Terriermon
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-30.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        terriermon.Draw(shader);
+
         //Botamon 
         model = glm::mat4(1);
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, avanzaDigi));
