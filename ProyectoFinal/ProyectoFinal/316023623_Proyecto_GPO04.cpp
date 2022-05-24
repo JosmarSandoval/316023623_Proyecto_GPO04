@@ -1,4 +1,4 @@
-// Std. Includes
+//Std. Includes
 #include <string>
 
 // GLEW
@@ -24,15 +24,25 @@
 const GLuint WIDTH = 1080, HEIGHT = 720;
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
+//float velociad;
+// 
 // Function prototypes
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void MouseCallback(GLFWwindow* window, double xPos, double yPos);
 void DoMovement();
 void animaCompleja();
 void animaDigimon();
+void avanzarPuente();
+void digiEvol();
+void eclosion();
+
+
+//void cambioCamara();
 
 // Camera
 Camera camera(glm::vec3(0.0f, 50.0f, 150.0f));
+//Camera camera2(glm::vec3(0.0f, 10.0f, 150.0f));
+
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
@@ -63,12 +73,17 @@ float movKitX5 = 0.0;
 float rotarCil = 0.0;
 float rotaDigi1 = 0.0;
 float avanzaDigi = 0.0;
-
+float avanzaPuenteX = 0.0;
+float avanzaPuenteY = 0.0;
+float salirEscena=0.0;
+float entrarEscena=0.0;
+float rotEvol=0.0;
 
 bool girarCil = false;
 bool movAdel = false; 
 bool giroRueda;
 bool columadel;
+bool digievol = false;
 bool animDigi = false;
 bool activanim = false;
 bool recorrido1 = true;
@@ -85,9 +100,20 @@ bool recorrido11 = false;
 bool recorrido12 = false;
 bool recorrido13 = true;
 bool recorrido14 = false;
-bool recorrido15 = false;
+bool recorrido15 = true;
 bool recorrido16 = false;
+bool active;
+bool eclosionar = false;
+bool cam1 = true;
+bool cam2 = false;
 
+//SpotLight
+float spotx = 10.0;
+float spoty = 10.0;
+float spotz = -10.0;
+float dirspotx = 0.0;
+float dirspoty = -1.0;
+float dirspotz = 0.0;
 
 //Coordenadas para los autos
 
@@ -114,6 +140,11 @@ glm::vec3 PosIniRueda1Auto4(-137.35f, 1.4f, 53.6f);
 glm::vec3 PosIniRueda2Auto4(-132.6f, 1.4f, 53.6f);
 glm::vec3 PosIniRueda3Auto4(-137.35f, 1.4f, 46.4f);
 glm::vec3 PosIniRueda4Auto4(-132.6f, 1.4f, 46.4f);
+
+
+//Pointlight
+glm::vec3 Light1 = glm::vec3(0);
+
 
 int main()
 {
@@ -173,8 +204,13 @@ int main()
     // Load models
     Model agua((char*)"Models/skybox/agua.obj");
     
-
     glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 1000.0f);
+    //glm::mat4 projection = glm::perspective(camera2.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 1000.0f);
+   
+    glm::vec3 pointLightPositions[] = {
+        glm::vec3(0.0f,2.0f, 0.0f),
+    };
+
 
     float vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
@@ -234,6 +270,7 @@ int main()
 
     };
 
+    
     // First, set the container's VAO (and VBO)
     GLuint VBO, VAO;
     glGenVertexArrays(1, &VAO);
@@ -295,7 +332,9 @@ int main()
         DoMovement();
         animaCompleja();
         animaDigimon();
-       
+        avanzarPuente();
+        digiEvol();
+        eclosion();
 
         // Clear the colorbuffer
         glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
@@ -306,6 +345,7 @@ int main()
         GLint viewPosLoc = glGetUniformLocation(lightingShader.Program, "viewPos");
         glUniform3f(lightPosLoc, lightPos.x + movelightPos, lightPos.y + movelightPos, lightPos.z + movelightPos);
         glUniform3f(viewPosLoc, camera.GetPosition().x, camera.GetPosition().y, camera.GetPosition().z);
+        //glUniform2f(viewPosLoc, camera.GetPosition().x, camera.GetPosition().z);
 
         //// Set lights properties
         //glUniform3f(glGetUniformLocation(lightingShader.Program, "light.ambient"), 0.4f, 0.4f, 0.4f);
@@ -318,6 +358,16 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), 0.1f, 0.1f, 0.1f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 1.0f, 1.0f, 1.0f);
 
+        /*if (cam1 == true) {
+            glm::mat4 view = camera.GetViewMatrix();
+            glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+            glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
+        }
+        if (cam2 == true) {
+            glm::mat4 view = camera2.GetViewMatrix();
+            glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+            glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
+        }*/
         glm::mat4 view = camera.GetViewMatrix();
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
@@ -339,15 +389,57 @@ int main()
         // Pass the matrices to the shader
         glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
         glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+        
+        
+        //pointLight
+        glm::vec3 lightColor;
+        lightColor.x = abs(sin(glfwGetTime() * Light1.x));
+        lightColor.y = abs(sin(glfwGetTime() * Light1.y));
+        lightColor.z = sin(glfwGetTime() * Light1.z);
+        
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].position"), pointLightPositions[0].x, pointLightPositions[0].y, pointLightPositions[0].z);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].ambient"), lightColor.x, lightColor.y, lightColor.z);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].diffuse"), lightColor.x, lightColor.y, lightColor.z);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].specular"), 1.0f, 1.0f, 0.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].constant"), 1.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].linear"), 0.045f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].quadratic"), 0.075f);
 
+
+        
+        // SpotLight
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.position"), spotx, spoty, spotz);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.direction"), dirspotx, dirspoty, dirspotz);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.ambient"), 1.0f, 1.0f, 1.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.diffuse"), 1.0f, 1.0f, 1.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.specular"), 1.0f, 1.0f, 1.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.constant"), 1.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.linear"), 0.09f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.quadratic"), 0.032f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.cutOff"), glm::cos(glm::radians(12.5f)));
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.outerCutOff"), glm::cos(glm::radians(15.0f)));
+
+        // Set material properties
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 16.0f);
 
         glm::mat4 model(1);
+       /* model = glm::mat4(1);
+        model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+        model = glm::translate(model, glm::vec3(0.0f, 9.5f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        skybox.Draw(lightingShader);*/
         
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.0f, 5.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        botamon.Draw(lightingShader);
+
         glBindVertexArray(0);
 
         //animación del agua
         Anim.Use();
-        tiempo = glfwGetTime();
         modelLoc = glGetUniformLocation(Anim.Program, "model");
         viewLoc = glGetUniformLocation(Anim.Program, "view");
         projLoc = glGetUniformLocation(Anim.Program, "projection");
@@ -365,9 +457,9 @@ int main()
 
         glBindVertexArray(0);
 
+
         shader.Use();
-
-
+        tiempo = glfwGetTime();
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
         
@@ -381,7 +473,9 @@ int main()
         
         //Terriermon
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-30.0f, 1.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(0.0f, entrarEscena, 0.0f));
+        model = glm::translate(model, glm::vec3(33.0f, -10.5f, 0.0f));
+        model = glm::rotate(model, glm::radians(rotEvol), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         terriermon.Draw(shader);
@@ -396,10 +490,19 @@ int main()
         botamon.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(0.0f, avanzaDigi*0.5f, 0.0f));
-        model = glm::translate(model, glm::vec3(0.0f, 10.0f, 0.0f));
-        model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
+        model = glm::translate(model, glm::vec3(0.0f, salirEscena, 0.0f));
+        model = glm::translate(model, glm::vec3(avanzaPuenteX, avanzaPuenteY, 0.0f));
+        model = glm::translate(model, glm::vec3(-25.0f, 2.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(rotEvol), glm::vec3(0.0f, 1.0, 0.0f));
         model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0, 0.0f));    
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        botamon.Draw(shader);
+
+        model = glm::mat4(1);
+        //model = glm::translate(model, glm::vec3(0.0f, 0.0f, avanzaDigi));
+        model = glm::translate(model, glm::vec3(50.0f, -5.0f, 35.0f));
+        //model = glm::rotate(model, glm::radians(rotaDigi1), glm::vec3(0.0f, 1.0, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         botamon.Draw(shader);
@@ -1604,7 +1707,7 @@ void DoMovement()
 
     if (keys[GLFW_KEY_S] || keys[GLFW_KEY_DOWN])
     {
-        camera.ProcessKeyboard(BACKWARD, deltaTime+0.5);
+       camera.ProcessKeyboard(BACKWARD, deltaTime+0.5);
     }
 
     if (keys[GLFW_KEY_A] || keys[GLFW_KEY_LEFT])
@@ -1698,7 +1801,24 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
         movAdel = false;
         giroRueda = false;
     }
+
+    if (keys[GLFW_KEY_C]) {
+        if (activanim == true) {
+            digievol= true;
+        }
+        
+    }
+
+    if (keys[GLFW_KEY_V]) {
+        if (activanim == true) {
+            eclosionar = true;
+        }
+
+    }
+   
+
 }
+
 
 void animaCompleja() {
     if(movAdel){
@@ -1916,6 +2036,86 @@ void animaDigimon() {
     }
 }
 
+void avanzarPuente() {
+    if (animDigi) {
+        if (recorrido13) {
+            if (avanzaPuenteX < 25.0f) {
+                avanzaPuenteX += 0.1f;
+                if (avanzaPuenteY < 8.0f) {
+                    avanzaPuenteY += 0.05f;
+                }
+            }
+            else {
+                recorrido13 = false;
+                recorrido14 = true;
+            }
+
+        }
+        if (recorrido14) {
+            if (avanzaPuenteX < 57.0f) {
+                avanzaPuenteX += 0.1f;
+                if (avanzaPuenteX > 28.0f && avanzaPuenteX < 55.0f) {
+                    avanzaPuenteY -= 0.03f;
+                }
+            }
+            else {
+                recorrido14 = false;
+                
+            }
+
+        }
+     
+    }
+
+}
+
+void digiEvol() {
+    if (digievol) {
+        if (recorrido15) {
+            if (rotEvol < 720.0) {
+                rotEvol += 1.0;
+            }
+            else {
+                recorrido15 = false;
+                recorrido16 = true;
+            }
+        }
+
+        if (recorrido16) {
+            if (salirEscena > -10.0f) {
+                salirEscena -= 0.05f;
+                if (rotEvol < 1080.0) {
+                    rotEvol += 2.0;
+                    entrarEscena += 0.06;
+                }
+            }
+            else {
+                recorrido16 = false;
+
+            }
+
+        }
+    }
+}
+
+void eclosion() {
+    if (eclosionar) {
+        if (keys[GLFW_KEY_SPACE])
+        {
+            active = !active;
+            if (active)
+            {
+                Light1 = glm::vec3(0.960f, 0.058f, 0.807f);
+
+            }
+            else
+            {
+                Light1 = glm::vec3(0);//Cuado es solo un valor en los 3 vectores pueden dejar solo una componente
+
+            }
+        }
+    }
+}
 
 void MouseCallback(GLFWwindow* window, double xPos, double yPos)
 {
@@ -1933,6 +2133,7 @@ void MouseCallback(GLFWwindow* window, double xPos, double yPos)
     lastY = yPos;
 
     camera.ProcessMouseMovement(xOffset, yOffset);
+    //camera.ProcessMouseMovement(xOffset,0);
 }
 
 
