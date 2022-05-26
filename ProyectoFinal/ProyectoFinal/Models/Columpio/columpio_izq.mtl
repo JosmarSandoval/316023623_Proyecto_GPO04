@@ -1,11 +1,32 @@
-newmtl columpio_izq5:lambert4SG
+newmtl botamon:lambert1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd ojosbotamon.png
+Ni 1.00
+newmtl botamon:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd ojosbotamon.png
+Ni 1.00
+newmtl botamon:lambert20SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd botamon_texture.png
+Ni 1.00
+newmtl columpio_izq:lambert4SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd texture.png
 Ni 1.00
-newmtl columpio_izq5:lambert5SG
+newmtl columpio_izq:lambert5SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
