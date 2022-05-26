@@ -332,8 +332,8 @@ int main()
     Model asientoColIzq((char*)"Models/Columpio/columpio_izq.obj");
     Model terriermon((char*)"Models/Terriermon/Terriermon3.obj");
 
-    //irrklang::ISoundEngine* SoundEngine = irrklang::createIrrKlangDevice();
-    irrklang::ISound* snd = SoundEngine->play2D("Audio/fondo.mp3", false);
+
+    irrklang::ISound* snd = SoundEngine->play2D("Audio/fondo.mp3", true);
 
     // Game loop
     while (!glfwWindowShouldClose(window))
